@@ -31,6 +31,7 @@ import java.util.Scanner;
 public class Banco {
 
     public static void main(String[] args) {
+        final double VALOR_MULTIPLICATIVO = 5.85;
 
         Scanner teclado = new Scanner(System.in);
 
@@ -45,11 +46,16 @@ public class Banco {
         } else {
             System.out.println("¿Cuento cobra mensualmente?");
 
-            int cobreMensual = teclado.nextInt();
+            int cobroMensual = teclado.nextInt();
             
             System.out.println("Cuanta pasta necesita para el prestamo");
             
             int importePrestamo = teclado.nextInt();
+            
+            double limitePrestamo = cobroMensual * VALOR_MULTIPLICATIVO;
+            
+            System.out.println("El cliente no puede pedir mas de "
+                    +limitePrestamo+" euros de prestamos");
         }
 
     }
