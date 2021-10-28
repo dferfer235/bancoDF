@@ -29,23 +29,23 @@ import java.util.Scanner;
  * préstamo supera los 75 años, el préstamo se rechaza.
  */
 public class Banco {
-
+    
     public static void main(String[] args) {
         final double VALOR_MULTIPLICATIVO = 5.85;
-
+        
         Scanner teclado = new Scanner(System.in);
-
+        
         System.out.println("¿Que edad tiene el cliente?");
-
+        
         int edad = teclado.nextInt();
-
+        
         if (edad < 18 || edad > 65) {
             
             System.out.println("El cliente no tiene una edad adecuada");
-
+            
         } else {
             System.out.println("¿Cuento cobra mensualmente?");
-
+            
             int cobroMensual = teclado.nextInt();
             
             System.out.println("Cuanta pasta necesita para el prestamo");
@@ -55,9 +55,24 @@ public class Banco {
             double limitePrestamo = cobroMensual * VALOR_MULTIPLICATIVO;
             
             System.out.println("El cliente no puede pedir mas de "
-                    +limitePrestamo+" euros de prestamos");
+                    + limitePrestamo + " euros de prestamos");
+            if (importePrestamo > limitePrestamo) {                
+                System.out.println("No podemos conceder el prestamo");
+            } else {
+                
+                System.out.println("El prestamo puede ser concedido");
+                System.out.println("¿Cuantos años necesitas para devolverlo?");
+                int tPrestamo = teclado.nextInt();
+                
+                if ((tPrestamo + edad) > 75) {
+                    System.out.println("No se puede conceder el prestamo");
+                } else {
+                    System.out.println("Las condiciones son adecuadas,"
+                            + " se concedera el prestamo");
+                }
+            }
         }
-
+        
     }
-
+    
 }
